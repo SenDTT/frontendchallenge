@@ -13,6 +13,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  width: 100%;
+  height: 100%;
 }
 
 a {
@@ -44,7 +47,6 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -64,7 +66,37 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+.custom-node {
+  @apply bg-white border border-gray-200 rounded-lg shadow-md p-2 flex flex-row items-center gap-3;
+}
+
+.custom-node-left {
+  @apply border border-indigo-800 bg-indigo-400 text-white rounded-md p-2 flex items-center justify-center shadow-lg;
+}
+
+.custom-node-icon {
+  @apply text-xl text-white size-6;
+}
+
+.custom-node-right {
+  @apply flex-1 text-gray-800 flex flex-col justify-start items-start text-left min-w-32;
+}
+
+.custom-node-heading {
+  @apply text-lg font-semibold;
+}
+
+.custom-node-label {
+  @apply text-base text-gray-600 capitalize;
+}
+
+.custom-node-handle {
+  @apply bg-gray-200 border border-gray-700 rounded-full w-4 h-4;
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
 }
