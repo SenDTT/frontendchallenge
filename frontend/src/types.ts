@@ -21,6 +21,7 @@ export interface FirstGrandChildNodeData {
   team: string;
   status: string;
   priority: number;
+  orgName: string;
 }
 
 export interface SecondGrandChildNodeData {
@@ -28,16 +29,23 @@ export interface SecondGrandChildNodeData {
   approver: string;
   deadline: Date | string;
   priority: number;
+  userId: string;
 }
 
-export type NodeData = RootNodeData | FirstChildNodeData | SecondChildNodeData | FirstGrandChildNodeData | SecondGrandChildNodeData;
+export type NodeData =
+  | RootNodeData
+  | FirstChildNodeData
+  | SecondChildNodeData
+  | FirstGrandChildNodeData
+  | SecondGrandChildNodeData;
 
 export interface PropsNodeForm {
   formData: NodeData;
   onChange: (data: NodeData) => void;
   onSubmit: (data: NodeData) => void;
   onCancel: () => void;
-  fields?: FormField[];
+  fields: FormField[];
+  openConfigPrefill: (fieldId: string) => void;
 }
 
 export interface FormField {
@@ -59,4 +67,54 @@ export interface ModalProps {
   children: React.ReactNode;
   title: string;
   className?: string;
+}
+
+export interface IPrefillData {
+  form: string;
+  data: NodeData;
+}
+
+export interface IPrefillDataProps {
+  fields: IPrefillData;
+  selected: ISelectedPrefillField[];
+  currentNodeId: string;
+  currentData: NodeData;
+  targetFieldId: string;
+  onSubmit: (
+    nodeId: string,
+    targetId: string,
+    selected: ISelectedPrefillField[]
+  ) => void;
+}
+
+export interface ISelectedPrefillField {
+  sourceId: string;
+  field: string;
+  targetId: string;
+  sourceType?: string;
+}
+
+export interface GlobalDataSource {
+  id: string;
+  name: string;
+  label: string;
+  type: string;
+  value: string;
+}
+
+export interface DependencyFields {
+  formId: string;
+  formName: string;
+  fields: FormField[];
+}
+
+export interface ReactFlowNodeData {
+  label: string;
+  heading: string;
+  isLeft: boolean;
+  isRight: boolean;
+  formData: Record<string, any>;
+  fields: FormField[];
+  parentIds?: string[];
+  prefillConfig?: Record<string, ISelectedPrefillField>;
 }

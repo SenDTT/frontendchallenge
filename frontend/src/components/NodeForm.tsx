@@ -1,7 +1,7 @@
 import { PropsNodeForm } from "../types";
 
 const NodeForm = (props: PropsNodeForm) => {
-    const { formData, onChange, onCancel, onSubmit, fields } = props;
+    const { formData, onChange, onCancel, onSubmit, fields, openConfigPrefill } = props;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
